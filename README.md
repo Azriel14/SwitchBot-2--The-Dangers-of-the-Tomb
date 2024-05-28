@@ -12,6 +12,6 @@ Renderer: idk lol
 
 ## Screenshots
 
-![The player character: Quandale Dinglelington](TheHub\Dingleton-export.png)
+![The player character: Quandale Dinglelington](TheHub/Dingleton-export.png)
 
-![A vertical slice of the game](TheHub\Splash.png)
+![A vertical slice of the game](TheHub/Splash.png)
