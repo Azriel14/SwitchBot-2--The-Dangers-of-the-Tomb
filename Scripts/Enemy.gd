@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
+var time = 0
 var speed = 800
+var timeThreshold = 1
 var detectionRange = 500
-var threshold_velocity = 100
-var time_below_threshold = 0
-var time_threshold = 1
-var move_direction = Vector2()
+var moveDirection = Vector2()
 
 @onready var navigation: NavigationAgent2D = $NavigationAgent
 @onready var player = $"../Player"
@@ -15,44 +14,48 @@ var state = State.idle
 
 func _physics_process(delta):
 # Navigation
-	var direction = Vector2()
-	var distance_to_player = global_position.distance_to(player.position)
+	var distanceToPlayer = global_position.distance_to(player.position)
 
-	if distance_to_player <= detectionRange:
+	if distanceToPlayer <= detectionRange:
 		navigation.target_position = player.position
-		direction = navigation.get_next_path_position() - global_position
-		direction = direction.normalized()
+		var direction = (navigation.get_next_path_position() - global_position).normalized()
 
 # Movement
-		if abs(direction.x) > abs(direction.y):
-			move_direction = Vector2(direction.x, 0)
-		else:
-			move_direction = Vector2(0, direction.y)
-
-		if state == State.idle:
-			time_below_threshold += delta
-			if time_below_threshold >= time_threshold:
+		if state == State.idle and velocity == Vector2.ZERO:
+			time += delta
+			if time >= timeThreshold:
 				state = State.moving
-				time_below_threshold = 0
-
-		if state == State.moving:
-			if velocity.length() < threshold_velocity:
-				velocity = move_direction * speed
-		else:
-			velocity = Vector2.ZERO
-
+				if abs(direction.x) > abs(direction.y):
+					moveDirection = Vector2(sign(direction.x), 0)
+				else:
+					moveDirection = Vector2(0, sign(direction.y))
+				time = 0
+		elif state == State.moving:
+			if velocity == Vector2.ZERO:
+				time += delta
+				if time >= timeThreshold:
+					state = State.idle
+					time = 0
+			else:
+				time = 0
+			velocity = moveDirection * speed
 	else:
 		if state == State.moving:
-			if velocity.length() < threshold_velocity:
-				velocity = move_direction * speed
+			if velocity == Vector2.ZERO:
+				time += delta
+				if time >= timeThreshold:
+					state = State.idle
+					time = 0
+			else:
+				time = 0
+			velocity = moveDirection * speed
 		else:
 			velocity = Vector2.ZERO
-			state = State.idle
-			time_below_threshold = 0
+			time = 0
 
 	move_and_slide()
 
-# No no, don't touch me there
+# Oh, you touched my tra lalala
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		body._death()

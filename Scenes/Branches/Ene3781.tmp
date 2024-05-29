@@ -33,6 +33,7 @@ shape = SubResource("RectangleShape2D_h62l6")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
+debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

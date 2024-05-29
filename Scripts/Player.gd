@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-const acceleration := 3000 # Speeding up
 const maxSpeed := 1000
-const friction := 2000 # Slowing down
+const friction := 2000
+const acceleration := 3000
 
-var screenSize: Vector2
 var facing := "downR"
+var screenSize: Vector2
 
 func _physics_process(delta):
 # Movement

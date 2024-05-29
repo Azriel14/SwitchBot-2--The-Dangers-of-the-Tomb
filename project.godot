@@ -31,6 +31,10 @@ window/stretch/aspect="ignore"
 
 project/assembly_name="SwitchBot 2"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [layer_names]
 
 2d_physics/layer_1="Player"
