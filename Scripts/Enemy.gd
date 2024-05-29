@@ -1,27 +1,24 @@
 extends CharacterBody2D
 
-var speed = 128
-var interval = 1
-var timer = 0
+var speed = 800
+var accel = 7
+
+@onready var nav: NavigationAgent2D = $NavigationAgent
+
+enum State {idle, moving}
+var state = State.idle
 
 func _physics_process(delta):
-	timer += delta
+	var direction = Vector2()
 
-	if timer >= interval:
-		timer = 0
-		move_enemy()
+	nav.target_position = $"../Player".position
 
-func move_enemy():
-	var player_position = $"../Player".get_position()
-	var direction = player_position - global_position
+	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 
-	var movement = direction * speed * interval
+	velocity = velocity. lerp(direction * speed , accel * delta)
 
-	movement.x = round(movement.x / 128) * 128
-	movement.y = round(movement.y / 128) * 128
-
-	global_position += movement
+	move_and_slide()
 
 func _on_area_2d_body_entered(body):
 # No no, don't touch me there

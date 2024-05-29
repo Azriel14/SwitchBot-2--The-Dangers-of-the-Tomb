@@ -8,6 +8,7 @@
 size = Vector2(40, 52)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 4
 script = ExtResource("1_lrpo8")
 
 [node name="Dingleton" type="Sprite2D" parent="."]
