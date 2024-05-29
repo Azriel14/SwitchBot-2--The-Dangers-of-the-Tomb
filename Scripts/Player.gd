@@ -5,7 +5,6 @@ const maxSpeed := 1000
 const friction := 2000 # Slowing down
 
 var screenSize: Vector2
-
 var facing := "downR"
 
 func _physics_process(delta):
