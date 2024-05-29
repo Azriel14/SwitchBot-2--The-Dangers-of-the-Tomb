@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyj6bhpyc5mn3"]
+
+[ext_resource type="Texture2D" uid="uid://b66dgw8cdj3ys" path="res://Assets/Sprites/Dingleton.png" id="1_hynhf"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lrpo8"]
+[ext_resource type="Texture2D" uid="uid://to31yidi85hh" path="res://Assets/Sprites/Shadow.png" id="2_g43de"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7fqd"]
+size = Vector2(40, 52)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_lrpo8")
+
+[node name="Dingleton" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_hynhf")
+hframes = 4
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.431373)
+z_index = -1
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_g43de")
+offset = Vector2(0, 4)
+
+[node name="DingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_j7fqd")
