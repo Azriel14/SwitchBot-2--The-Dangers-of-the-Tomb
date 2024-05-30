@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj65hxl6v5k3x"]
+
+[ext_resource type="Script" path="res://Scripts/Switch.gd" id="1_15fcj"]
+[ext_resource type="Texture2D" uid="uid://d2h017pej1p4x" path="res://Assets/Sprites/Switch.png" id="2_jgy4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vemef"]
+size = Vector2(128, 128.25)
+
+[node name="Switch" type="CharacterBody2D" groups=["Switch"]]
+script = ExtResource("1_15fcj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_jgy4o")
+vframes = 2
+
+[node name="SwitchCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.125)
+shape = SubResource("RectangleShape2D_vemef")
