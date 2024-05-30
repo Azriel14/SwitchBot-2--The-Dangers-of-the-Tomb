@@ -65,6 +65,6 @@ func _update_sprite_frame():
 
 # What happens when you die because you were killed
 func _death():
-	var scene_tree = get_tree()
-	scene_tree.reload_current_scene()
+	var sceneTree = get_tree()
+	sceneTree.reload_current_scene()
 	print("RIP Dingleton")

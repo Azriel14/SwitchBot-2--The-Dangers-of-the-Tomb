@@ -8,6 +8,6 @@ func _opened():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		if enterable == true:
+		if enterable:
 			Singleton._increment_stage()
-			get_tree().change_scene_to_file("res://Scenes/Stages/Stage" + str(Singleton.stage) + ".tscn")
+			get_tree().change_scene_to_file("res://Scenes/Stages/" + str(Singleton.stage) + ".tscn")
