@@ -549,7 +549,7 @@ script = ExtResource("1_rwml7")
 layout_mode = 0
 offset_right = 448.0
 offset_bottom = 1087.0
-color = Color(0.235294, 0.121569, 0.2, 1)
+color = Color(0.937255, 0.764706, 0, 1)
 
 [node name="Triangles" type="Sprite2D" parent="Menu"]
 texture_filter = 1
@@ -562,8 +562,10 @@ region_rect = Rect2(0, 0, 16, 272)
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 35.0
+offset_top = 550.0
+offset_right = 420.0
+offset_bottom = 801.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
 layout_mode = 2
@@ -571,22 +573,27 @@ layout_mode = 2
 [node name="Start" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Start"
+alignment = 2
 
 [node name="Stage Select" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Stage Select"
+alignment = 2
 
 [node name="Options" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
+alignment = 2
 
 [node name="Credits" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
+alignment = 2
 
 [node name="Quit" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+alignment = 2
 
 [node name="PlayerMenu" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(-50, 0)
