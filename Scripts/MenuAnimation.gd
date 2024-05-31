@@ -3,7 +3,7 @@ extends CharacterBody2D
 var rng = RandomNumberGenerator.new()
 var playerTouched = false
 
-@onready var randomNumberVelocityMinus = rng.randf_range(100, 0)
+@onready var randomNumberVelocityMinus = rng.randf_range(0, 100)
 
 func _physics_process(_delta):
 

@@ -3,7 +3,7 @@ extends Node
 var stage = 1
 var rng = RandomNumberGenerator.new()
 
-@onready var randomNumberY = rng.randf_range(128, 960)
+@onready var randomNumberY = rng.randf_range(345, 740)
 @onready var randomNumberVelocity = rng.randf_range(400, 900)
 
 func _increment_stage():

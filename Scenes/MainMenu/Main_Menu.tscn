@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b330p8xbtmssf"]
+
+[ext_resource type="Texture2D" uid="uid://bvtn767bikj6n" path="res://Assets/Sprites/MainMenu.png" id="1_hfhkn"]
+[ext_resource type="PackedScene" uid="uid://cv6nh2fw72svo" path="res://Scenes/MainMenu/Main_Menu_Animation.tscn" id="1_sav8b"]
+[ext_resource type="Script" path="res://Scripts/Woosh.gd" id="2_em81d"]
+
+[node name="Main_Menu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 449.0
+offset_bottom = 1087.0
+color = Color(0.235294, 0.121569, 0.2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(481, 543)
+scale = Vector2(4, 4)
+texture = ExtResource("1_hfhkn")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 272)
+script = ExtResource("2_em81d")
+
+[node name="MainMenuAnimation" parent="." instance=ExtResource("1_sav8b")]
+z_index = -1
