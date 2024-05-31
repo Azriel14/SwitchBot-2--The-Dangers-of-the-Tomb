@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var rng = RandomNumberGenerator.new()
 var playerTouched = false
+var rng = RandomNumberGenerator.new()
 
 @onready var randomNumberVelocityMinus = rng.randf_range(0, 100)
 
