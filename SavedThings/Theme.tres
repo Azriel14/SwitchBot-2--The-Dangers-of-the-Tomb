@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bjou0laa2y76d"]
+
+[ext_resource type="FontFile" uid="uid://cbpdqgh5x0jje" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7u8co"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wg3r"]
+bg_color = Color(1, 1, 1, 0)
+
+[resource]
+default_font = ExtResource("1_7u8co")
+default_font_size = 36
+Button/styles/normal = SubResource("StyleBoxFlat_7wg3r")

@@ -4,21 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cmu6kuysuve6a" path="res://Scenes/Branches/Enemy.tscn" id="2_t0dr6"]
 [ext_resource type="PackedScene" uid="uid://bj65hxl6v5k3x" path="res://Scenes/Branches/Switch.tscn" id="3_okycg"]
 [ext_resource type="PackedScene" uid="uid://byqfe5dkpywex" path="res://Scenes/Branches/Exit.tscn" id="4_c7417"]
+[ext_resource type="TileSet" uid="uid://8rs76t00n3nj" path="res://SavedThings/TileSet.tres" id="5_7uwpe"]
 [ext_resource type="Script" path="res://Scripts/Stage.gd" id="7_n1n14"]
-
-[sub_resource type="TileSet" id="TileSet_1yk0v"]
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 3
-physics_layer_1/collision_layer = 8
-physics_layer_1/collision_mask = 2
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Spikes"
-terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)
-terrain_set_0/terrain_1/name = "Walls"
-terrain_set_0/terrain_1/color = Color(1, 1, 1, 1)
-navigation_layer_0/layers = 1
-custom_data_layer_0/name = "isSpike"
-custom_data_layer_0/type = 1
 
 [node name="Stage2" type="Node2D"]
 
@@ -38,7 +25,7 @@ position = Vector2(1120, 96)
 z_index = -2
 texture_filter = 1
 scale = Vector2(4, 4)
-tile_set = SubResource("TileSet_1yk0v")
+tile_set = ExtResource("5_7uwpe")
 rendering_quadrant_size = 64
 format = 2
 layer_0/name = "Floor"

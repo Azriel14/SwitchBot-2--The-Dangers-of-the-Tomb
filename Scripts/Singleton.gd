@@ -10,7 +10,7 @@ func _increment_stage():
 	stage += 1
 
 func _change_y():
-	randomNumberY = rng.randf_range(128, 960)
+	randomNumberY = rng.randf_range(345, 740)
 
 func _change_velocity():
 	randomNumberVelocity = rng.randf_range(400, 900)
