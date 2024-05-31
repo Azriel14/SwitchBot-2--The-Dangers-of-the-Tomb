@@ -6,7 +6,7 @@ var rng = RandomNumberGenerator.new()
 @onready var randomNumberY = rng.randf_range(385, 700)
 @onready var randomNumberVelocity = rng.randf_range(400, 900)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 # Speedrun Button
 	if Input.get_action_strength("Speedrun"):
 		Engine.time_scale = 2

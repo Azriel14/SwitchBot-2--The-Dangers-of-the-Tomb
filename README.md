@@ -8,7 +8,7 @@ The goal of the inital game was leading big block enemies through a hidden templ
 
 Language: GDScipt
 
-Renderer: idk lol
+Renderer: OpenGL 3.3.0
 
 ## Screenshots
 

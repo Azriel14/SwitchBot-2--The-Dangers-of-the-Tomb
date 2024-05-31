@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://8rs76t00n3nj" path="res://SavedThings/TileSet.tres" id="5_q8gog"]
 [ext_resource type="Script" path="res://Scripts/Stage.gd" id="6_snlwj"]
 
-[node name="Stage2" type="Node2D"]
+[node name="Stage4" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uufyo")]
 position = Vector2(1283, 573)
