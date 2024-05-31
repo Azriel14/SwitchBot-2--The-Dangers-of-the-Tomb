@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cbpdqgh5x0jje"
-path="res://.godot/imported/PressStart2P-Regular.ttf-ff06fea3c86e7e3aa64800176250a704.fontdata"
+uid="uid://jyycn31gitf2"
+path="res://.godot/imported/EndlessBossBattleRegular.ttf-8049ba69cbc9f7eac5be137c59ee2c72.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/PressStart2P-Regular.ttf"
-dest_files=["res://.godot/imported/PressStart2P-Regular.ttf-ff06fea3c86e7e3aa64800176250a704.fontdata"]
+source_file="res://Assets/Fonts/EndlessBossBattleRegular.ttf"
+dest_files=["res://.godot/imported/EndlessBossBattleRegular.ttf-8049ba69cbc9f7eac5be137c59ee2c72.fontdata"]
 
 [params]
 

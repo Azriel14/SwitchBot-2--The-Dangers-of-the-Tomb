@@ -10,8 +10,8 @@ var screenSize: Vector2
 func _physics_process(delta):
 # Movement
 	var inputVector := Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	)
 
 	if inputVector != Vector2():
@@ -46,10 +46,10 @@ func _physics_process(delta):
 func _update_sprite_frame():
 	var frame = $Dingleton.frame
 	var directionMap = {
-		"upR": {"ui_down": 0, "ui_left": 3},
-		"upL": {"ui_down": 1, "ui_right": 2},
-		"downR": {"ui_up": 2, "ui_left": 1},
-		"downL": {"ui_up": 3, "ui_right": 0}
+		"upR": {"Down": 0, "Left": 3},
+		"upL": {"Down": 1, "Right": 2},
+		"downR": {"Up": 2, "Left": 1},
+		"downL": {"Up": 3, "Right": 0}
 	}
 	var facingMap = ["downR", "downL", "upR", "upL"]
 

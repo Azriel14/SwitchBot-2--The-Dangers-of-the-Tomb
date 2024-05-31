@@ -6,7 +6,6 @@ var playerTouched = false
 @onready var randomNumberVelocityMinus = rng.randf_range(0, 100)
 
 func _physics_process(_delta):
-
 	if playerTouched:
 		$"../PlayerMenu".velocity.x = 0
 	else:
