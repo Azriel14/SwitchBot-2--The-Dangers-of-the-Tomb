@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ydp5q4hytvgx"]
+
+[ext_resource type="FontFile" uid="uid://jyycn31gitf2" path="res://Assets/Fonts/EndlessBossBattleRegular.ttf" id="1_j2y86"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -95.0
+offset_right = 320.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_j2y86")
+theme_override_font_sizes/font_size = 50
+text = "Comgatarelations
+
+You beat our epic video game.
+Sincerely hope you enjoyed it.
+"

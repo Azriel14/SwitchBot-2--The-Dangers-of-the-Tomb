@@ -3,7 +3,7 @@ extends CharacterBody2D
 var time = 0
 var speed = 800
 var timeThreshold = 1
-var detectionRange = 500
+var detectionRange = 2000
 var moveDirection = Vector2()
 
 @onready var navigation: NavigationAgent2D = $NavigationAgent
