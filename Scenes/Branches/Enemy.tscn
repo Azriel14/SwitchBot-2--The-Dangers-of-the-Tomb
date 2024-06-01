@@ -44,20 +44,26 @@ collision_mask = 97
 [node name="VingTouching" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_c4n0h")
 
-[node name="ShapeCastUp" type="ShapeCast2D" parent="."]
+[node name="Cast" type="Node2D" parent="."]
+
+[node name="ShapeCastUp" type="ShapeCast2D" parent="Cast"]
 shape = SubResource("RectangleShape2D_0es5j")
 target_position = Vector2(0, -1080)
+collision_mask = 5
 
-[node name="ShapeCastDown" type="ShapeCast2D" parent="."]
+[node name="ShapeCastDown" type="ShapeCast2D" parent="Cast"]
 shape = SubResource("RectangleShape2D_0es5j")
 target_position = Vector2(0, 1080)
+collision_mask = 5
 
-[node name="ShapeCastLeft" type="ShapeCast2D" parent="."]
+[node name="ShapeCastLeft" type="ShapeCast2D" parent="Cast"]
 shape = SubResource("RectangleShape2D_oy4ae")
 target_position = Vector2(-1920, 0)
+collision_mask = 5
 
-[node name="ShapeCastRight" type="ShapeCast2D" parent="."]
+[node name="ShapeCastRight" type="ShapeCast2D" parent="Cast"]
 shape = SubResource("RectangleShape2D_oy4ae")
 target_position = Vector2(1920, 0)
+collision_mask = 5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

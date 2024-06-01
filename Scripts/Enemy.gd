@@ -6,18 +6,23 @@ var timeThreshold = 1
 var detectionRange = 900
 var moveDirection = Vector2()
 
-@onready var navigation: NavigationAgent2D = $NavigationAgent
 @onready var player = $"../Player"
+@onready var allCast = [
+	$Cast/ShapeCastUp,
+	$Cast/ShapeCastDown,
+	$Cast/ShapeCastLeft,
+	$Cast/ShapeCastRight
+	]
 
 enum State {idle, moving}
 var state = State.idle
 
 func _physics_process(delta):
 	# Navigation
-	var shape_cast_up_colliding = $ShapeCastUp.is_colliding()
-	var shape_cast_down_colliding = $ShapeCastDown.is_colliding()
-	var shape_cast_left_colliding = $ShapeCastLeft.is_colliding()
-	var shape_cast_right_colliding = $ShapeCastRight.is_colliding()
+	var shapeCastUpColliding = $Cast/ShapeCastUp.is_colliding() &&  $Cast/ShapeCastUp.get_collider(0) == player
+	var shapeCastDownColliding = $Cast/ShapeCastDown.is_colliding() && $Cast/ShapeCastDown.get_collider(0) == player
+	var shapeCastLeftColliding = $Cast/ShapeCastLeft.is_colliding() && $Cast/ShapeCastLeft.get_collider(0) == player
+	var shapeCastRightColliding = $Cast/ShapeCastRight.is_colliding() && $Cast/ShapeCastRight.get_collider(0) == player
 
 	# Movement
 	if state == State.idle and velocity == Vector2.ZERO:
@@ -25,16 +30,18 @@ func _physics_process(delta):
 		if time >= timeThreshold:
 			state = State.moving
 			time = 0
-			
-			# Determine move direction based on ShapeCasts when changing to moving state
-			if shape_cast_up_colliding:
-				moveDirection = Vector2.UP
-			elif shape_cast_down_colliding:
-				moveDirection = Vector2.DOWN
-			elif shape_cast_left_colliding:
-				moveDirection = Vector2.LEFT
-			elif shape_cast_right_colliding:
-				moveDirection = Vector2.RIGHT
+
+		for cast in allCast:
+			if cast.get_collider(0) == player:
+				if shapeCastUpColliding:
+					moveDirection = Vector2.UP
+				elif shapeCastDownColliding:
+					moveDirection = Vector2.DOWN
+				elif shapeCastLeftColliding:
+					moveDirection = Vector2.LEFT
+				elif shapeCastRightColliding:
+					moveDirection = Vector2.RIGHT
+				break
 				
 	elif state == State.moving:
 		if velocity == Vector2.ZERO:

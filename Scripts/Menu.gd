@@ -47,7 +47,5 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _pull_out():
-	$MarginContainer
-	$Logo
-	$LogoShadow
+	pass
 	
