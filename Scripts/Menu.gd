@@ -18,6 +18,8 @@ func _physics_process(delta):
 
 	$Triangles.region_rect = Rect2(0, down, 16, 272)
 	$TrianglesShadow.region_rect = Rect2(0, down, 16, 272)
+	$InTriangles.region_rect = Rect2(0, down + 8, 16, 272)
+	$InTrianglesShadow.region_rect = Rect2(0, down + 8, 16, 272)
 
 # Logo wobble
 	timePassed += delta
@@ -35,7 +37,7 @@ func _physics_process(delta):
 		if $ColorRect.size.x <= 1015 && skibidi:
 			$Logo.position.x -= gyat
 			$LogoShadow.position.x -= gyat
-			$MarginContainer.position.x -= gyat
+			$Buttons.position.x -= gyat
 			$ColorRect.size.x += gyat
 			$ColorRectShadow.size.x += gyat
 			$Triangles.position.x += gyat
@@ -57,7 +59,7 @@ func _physics_process(delta):
 		if $ColorRect.size.x > 448 && !skibidi:
 			$Logo.position.x += gyat
 			$LogoShadow.position.x += gyat
-			$MarginContainer.position.x += gyat
+			$Buttons.position.x += gyat
 			$ColorRect.size.x -= gyat
 			$ColorRectShadow.size.x -= gyat
 			$Triangles.position.x -= gyat

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cv6nh2fw72svo"]
+[gd_scene load_steps=22 format=3 uid="uid://cv6nh2fw72svo"]
 
 [ext_resource type="Theme" uid="uid://bjou0laa2y76d" path="res://SavedThings/Theme.tres" id="1_i8gvx"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rwml7"]
@@ -7,10 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://cg568u605mhbn" path="res://Assets/Sprites/Logo.png" id="3_ni76p"]
 [ext_resource type="Script" path="res://Scripts/MenuCharacterAnimation.gd" id="3_q21je"]
 [ext_resource type="Texture2D" uid="uid://b66dgw8cdj3ys" path="res://Assets/Sprites/Dingleton.png" id="4_84nj6"]
+[ext_resource type="Texture2D" uid="uid://c2jrsg26wlof3" path="res://Assets/Credits/Azriel14.png" id="4_htv1g"]
 [ext_resource type="Texture2D" uid="uid://to31yidi85hh" path="res://Assets/Sprites/Shadow.png" id="5_h0xlq"]
+[ext_resource type="Texture2D" uid="uid://d0cwn6m7lpnc1" path="res://Assets/Credits/SonicMam.png" id="5_l8pob"]
 [ext_resource type="Texture2D" uid="uid://c7ssjci1pb138" path="res://Assets/Sprites/Vingleton.png" id="6_k27mj"]
 [ext_resource type="Texture2D" uid="uid://0nl6wvo87sql" path="res://Assets/Sprites/TileSet.png" id="7_rxe0v"]
 [ext_resource type="Texture2D" uid="uid://b2v8pwi1bgb0g" path="res://Assets/Sprites/Wall.png" id="8_jviay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8du3"]
+shader = ExtResource("3_4va0g")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 8.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3b82u"]
 shader = ExtResource("3_4va0g")
@@ -565,63 +576,191 @@ texture = ExtResource("1_yqs6j")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 272)
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+[node name="InTriangles" type="Sprite2D" parent="Menu"]
+self_modulate = Color(0.219608, 0.384314, 0.317647, 1)
+z_index = 2
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1022, 540)
+scale = Vector2(4, 3.97059)
+texture = ExtResource("1_yqs6j")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 272)
+
+[node name="InTrianglesShadow" type="Sprite2D" parent="Menu"]
+self_modulate = Color(0, 0, 0, 0.470588)
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1022, 544)
+scale = Vector2(4, 3.97794)
+texture = ExtResource("1_yqs6j")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 272)
+
+[node name="Buttons" type="MarginContainer" parent="Menu"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 496.0
 offset_right = 448.0
 offset_bottom = 1086.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Buttons"]
 layout_mode = 2
 
-[node name="Start" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "START"
 alignment = 2
 
-[node name="Stage Select" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Stage Select" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "STAGE SELECT"
 alignment = 2
 
-[node name="Options" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "OPTIONS"
 alignment = 2
 
-[node name="How To Play" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="How To Play" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "HOW TO PLAY"
 alignment = 2
 
-[node name="Credits" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CREDITS"
 alignment = 2
 
-[node name="Quit" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="Menu/Buttons/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(0.1375, 0.25, 0.203125, 1)
 theme_override_colors/font_pressed_color = Color(0.843184, 0.843184, 0.843184, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "QUIT"
 alignment = 2
+
+[node name="Credits" type="MarginContainer" parent="Menu"]
+visible = false
+layout_mode = 0
+offset_right = 1054.0
+offset_bottom = 1080.0
+theme = ExtResource("1_i8gvx")
+
+[node name="CreditsColorRect" type="ColorRect" parent="Menu/Credits"]
+layout_mode = 2
+color = Color(0.137255, 0.25098, 0.203922, 1)
+
+[node name="GridContainer" type="GridContainer" parent="Menu/Credits"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 2
+
+[node name="Me" type="TextureRect" parent="Menu/Credits/GridContainer"]
+z_index = 2
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_htv1g")
+stretch_mode = 2
+
+[node name="MeShadow" type="TextureRect" parent="Menu/Credits/GridContainer/Me"]
+self_modulate = Color(0.219608, 0.384314, 0.317647, 1)
+z_index = -1
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -164.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_htv1g")
+stretch_mode = 2
+
+[node name="You" type="TextureRect" parent="Menu/Credits/GridContainer"]
+z_index = 2
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_l8pob")
+stretch_mode = 2
+
+[node name="YouShadow" type="TextureRect" parent="Menu/Credits/GridContainer/You"]
+self_modulate = Color(0.219608, 0.384314, 0.317647, 1)
+z_index = -1
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -164.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_l8pob")
+stretch_mode = 2
+
+[node name="Me2" type="Label" parent="Menu/Credits/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Azriel14
+- Game Designer
+- Programmer
+- Animator
+- Artist
+"
+
+[node name="You2" type="Label" parent="Menu/Credits/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "SonicMam
+- Level Designer
+- Sound Designer"
 
 [node name="Logo" type="Sprite2D" parent="Menu"]
 z_index = 2
@@ -709,10 +848,10 @@ layer_1/name = "Wall"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(15, 131073, 0, 17, 1, 0, 18, 131073, 0, 20, 1, 0, 22, 65537, 0, 23, 65537, 0, 28, 1, 0, 29, 131073, 0, 65565, 131073, 1, 131101, 131073, 2, 131100, 262145, 2, 65564, 1, 1, 65560, 131073, 1, 65559, 327681, 2, 65558, 65537, 2, 65557, 65537, 2, 65556, 262145, 2, 65555, 65537, 0, 65554, 65537, 1, 65553, 327681, 3, 65552, 65537, 0, 65551, 262145, 3, 65550, 1, 1, 131087, 262145, 2, 196623, 131073, 2, 196622, 1, 2, 131086, 327681, 2, 131085, 65537, 3, 131084, 262145, 1, 65548, 196609, 1, 12, 196609, 0, 14, 1, 0, 131092, 131073, 1, 196628, 131073, 2, 196627, 1, 2, 131091, 327681, 2, 131096, 262145, 3, 131097, 65537, 0, 196633, 65537, 1, 131098, 65537, 0, 196634, 262145, 2, 1048588, 196609, 3, 917522, 1, 0, 917525, 327681, 3, 917526, 262145, 3, 917527, 131073, 0, 917530, 1, 1, 917531, 262145, 2, 917532, 65537, 2, 917533, 131073, 2, 1048605, 196609, 3, 983067, 131073, 1, 983066, 327681, 3, 1048601, 65537, 2, 1048602, 65537, 2, 1048603, 131073, 2, 1048600, 1, 3, 983063, 131073, 2, 983062, 262145, 2, 1048598, 131073, 2, 1048597, 65537, 2, 1048596, 1, 2, 983060, 327681, 2, 983061, 65537, 1, 983059, 65537, 2, 1048594, 196609, 3, 1048591, 196609, 3, 983058, 1, 2, 983065, 1, 0, 983064, 196609, 3, 917516, 131073, 2, 851980, 131073, 0, 851981, 1, 3, 851990, 131073, 0, 851989, 1, 0, 851995, 65537, 0, 851996, 327681, 3, 26, 196609, 3, 24, 131073, 0, 21, 65537, 0, 131090, 65537, 2, 131095, 1, 1, 196631, 1, 2, 196632, 327681, 2, 262168, 1, 2, 262169, 65537, 2, 262170, 131073, 2, 131099, 65537, 0, 196635, 65537, 2, 196636, 131073, 2, 851997, 131073, 1, 851994, 1, 0, 786461, 131073, 0, 786460, 1, 0, 917524, 65537, 0, 851984, 65537, 3, 851985, 131073, 3, 917523, 65537, 0, 851982, 65537, 3, 1048586, 131073, 2, 983050, 262145, 2, 917514, 1, 0, 917515, 262145, 2, 851979, 1, 0, 983051, 131073, 2, 1048585, 1, 2, 983049, 1, 0, 131088, 65537, 2, 131089, 65537, 2, 851983, 65537, 3)
 
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Start" to="Menu" method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Stage Select" to="Menu" method="_on_stage_select_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Options" to="Menu" method="_on_options_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/How To Play" to="Menu" method="_on_how_to_play_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Credits" to="Menu" method="_on_credits_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit" to="Menu" method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/Start" to="Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/Stage Select" to="Menu" method="_on_stage_select_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/Options" to="Menu" method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/How To Play" to="Menu" method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/Credits" to="Menu" method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/Buttons/VBoxContainer/Quit" to="Menu" method="_on_quit_pressed"]
 [connection signal="body_entered" from="TP" to="PlayerMenu" method="_on_area_2d_body_entered"]
