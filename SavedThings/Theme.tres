@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bjou0laa2y76d"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bjou0laa2y76d"]
 
 [ext_resource type="FontFile" uid="uid://jyycn31gitf2" path="res://Assets/Fonts/EndlessBossBattleRegular.ttf" id="1_e0qx5"]
 
@@ -21,6 +21,7 @@ border_width_top = 20
 border_width_right = 5
 border_width_bottom = 20
 border_color = Color(0, 0, 0, 0)
+shadow_color = Color(0, 0, 0, 1)
 anti_aliasing = false
 anti_aliasing_size = 10.0
 
@@ -34,6 +35,26 @@ border_color = Color(0, 0, 0, 0)
 anti_aliasing = false
 anti_aliasing_size = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hffq"]
+bg_color = Color(0.219608, 0.384314, 0.317647, 1)
+border_width_left = 365
+border_color = Color(0.219608, 0.384314, 0.317647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpuhy"]
+bg_color = Color(0.219608, 0.384314, 0.317647, 1)
+border_width_left = 365
+border_color = Color(0.219608, 0.384314, 0.317647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr054"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 400
+border_width_bottom = 30
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
 [resource]
 default_font = ExtResource("1_e0qx5")
 default_font_size = 55
@@ -41,3 +62,6 @@ Button/styles/focus = SubResource("StyleBoxEmpty_qtad2")
 Button/styles/hover = SubResource("StyleBoxFlat_yjp0u")
 Button/styles/normal = SubResource("StyleBoxFlat_7wg3r")
 Button/styles/pressed = SubResource("StyleBoxFlat_tor2l")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_4hffq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_rpuhy")
+HSlider/styles/slider = SubResource("StyleBoxFlat_vr054")

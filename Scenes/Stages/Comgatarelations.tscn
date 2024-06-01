@@ -25,3 +25,6 @@ text = "Comgatarelations
 You beat our epic video game.
 Sincerely hope you enjoyed it.
 "
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cv6nh2fw72svo"]
+[gd_scene load_steps=34 format=3 uid="uid://cv6nh2fw72svo"]
 
 [ext_resource type="Theme" uid="uid://bjou0laa2y76d" path="res://SavedThings/Theme.tres" id="1_i8gvx"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rwml7"]
@@ -8,11 +8,17 @@
 [ext_resource type="Script" path="res://Scripts/MenuCharacterAnimation.gd" id="3_q21je"]
 [ext_resource type="Texture2D" uid="uid://b66dgw8cdj3ys" path="res://Assets/Sprites/Dingleton.png" id="4_84nj6"]
 [ext_resource type="Texture2D" uid="uid://c2jrsg26wlof3" path="res://Assets/Credits/Azriel14.png" id="4_htv1g"]
+[ext_resource type="Script" path="res://Scripts/MasterSlider.gd" id="4_oijk1"]
 [ext_resource type="Texture2D" uid="uid://to31yidi85hh" path="res://Assets/Sprites/Shadow.png" id="5_h0xlq"]
 [ext_resource type="Texture2D" uid="uid://d0cwn6m7lpnc1" path="res://Assets/Credits/SonicMam.png" id="5_l8pob"]
+[ext_resource type="Script" path="res://Scripts/MusicSlider.gd" id="5_yp82e"]
+[ext_resource type="Script" path="res://Scripts/SFXSlider.gd" id="6_e006d"]
 [ext_resource type="Texture2D" uid="uid://c7ssjci1pb138" path="res://Assets/Sprites/Vingleton.png" id="6_k27mj"]
+[ext_resource type="Texture2D" uid="uid://ce0qoquivjrtk" path="res://Assets/Sprites/checked-export.png" id="7_k8ts3"]
 [ext_resource type="Texture2D" uid="uid://0nl6wvo87sql" path="res://Assets/Sprites/TileSet.png" id="7_rxe0v"]
+[ext_resource type="Texture2D" uid="uid://3k3klvk513ek" path="res://Assets/Sprites/Unchecked-export.png" id="7_sgf8i"]
 [ext_resource type="Texture2D" uid="uid://b2v8pwi1bgb0g" path="res://Assets/Sprites/Wall.png" id="8_jviay"]
+[ext_resource type="AudioStream" uid="uid://drc5vag1s2bxs" path="res://Assets/Sound/One-Piece-We-Are-8Bit.ogg" id="15_f6mj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v27hy"]
 
@@ -29,13 +35,23 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 corner_detail = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
 anti_aliasing = false
+anti_aliasing_size = 10.0
 
 [sub_resource type="Theme" id="Theme_780h7"]
 Button/styles/focus = SubResource("StyleBoxEmpty_v27hy")
 Button/styles/hover = SubResource("StyleBoxFlat_vw4if")
 Button/styles/normal = SubResource("StyleBoxFlat_vw4if")
 Button/styles/pressed = SubResource("StyleBoxFlat_vw4if")
+
+[sub_resource type="ImageTexture" id="ImageTexture_qpvjf"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_slnh8"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_osqdj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8du3"]
 shader = ExtResource("3_4va0g")
@@ -577,6 +593,7 @@ offset_bottom = 1080.0
 color = Color(0.219608, 0.384314, 0.317647, 1)
 
 [node name="ContentArea" type="Control" parent="Menu"]
+clip_contents = true
 anchors_preset = 0
 offset_right = 1054.0
 offset_bottom = 1114.0
@@ -703,6 +720,118 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 120
 text = "9"
 
+[node name="Options" type="MarginContainer" parent="Menu/ContentArea"]
+clip_children = 2
+layout_mode = 0
+offset_left = 1150.0
+offset_right = 2204.0
+offset_bottom = 1080.0
+theme = ExtResource("1_i8gvx")
+
+[node name="OptionsTriangles" type="Sprite2D" parent="Menu/ContentArea/Options"]
+self_modulate = Color(0.137255, 0.25098, 0.203922, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-32, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("1_yqs6j")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 272)
+
+[node name="OptionsColorRect" type="ColorRect" parent="Menu/ContentArea/Options"]
+layout_mode = 2
+color = Color(0.137255, 0.25098, 0.203922, 1)
+
+[node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="MasterLabel" type="Label" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
+text = "Master"
+horizontal_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("ImageTexture_qpvjf")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_slnh8")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_osqdj")
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("4_oijk1")
+
+[node name="MusicLabel" type="Label" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
+text = "Music"
+horizontal_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("ImageTexture_qpvjf")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_slnh8")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_osqdj")
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("5_yp82e")
+
+[node name="SFXLabel" type="Label" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
+text = "SFX"
+horizontal_alignment = 2
+
+[node name="SFXSlider" type="HSlider" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_icons/grabber = SubResource("ImageTexture_qpvjf")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_slnh8")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_osqdj")
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("6_e006d")
+
+[node name="ScreenShakeLabel" type="Label" parent="Menu/ContentArea/Options/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
+text = "Screen Shake"
+horizontal_alignment = 2
+
+[node name="ScreenShackCheckButton" type="CheckButton" parent="Menu/ContentArea/Options/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/checked = ExtResource("7_k8ts3")
+theme_override_icons/unchecked = ExtResource("7_sgf8i")
+button_pressed = true
+
 [node name="HowToPlay" type="MarginContainer" parent="Menu/ContentArea"]
 clip_children = 2
 layout_mode = 0
@@ -745,6 +874,10 @@ stretch_mode = 2
 
 [node name="Step12" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 32
 text = "You play as Quandale Dinglelington
 currently exploring a temple.
@@ -760,6 +893,10 @@ stretch_mode = 2
 
 [node name="Step22" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 32
 text = "Along your journey you will find
 yourself face to face with
@@ -776,6 +913,10 @@ stretch_mode = 2
 
 [node name="Step32" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 32
 text = "Guide Vingletons over plates, 
 causing crawlspaces to open.
@@ -809,7 +950,7 @@ color = Color(0.137255, 0.25098, 0.203922, 1)
 layout_mode = 2
 
 [node name="MeShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Panel"]
-self_modulate = Color(0.219608, 0.384314, 0.317647, 1)
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
 offset_left = 171.0
@@ -822,7 +963,7 @@ texture = ExtResource("4_htv1g")
 stretch_mode = 2
 
 [node name="YouShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Panel"]
-self_modulate = Color(0.219608, 0.384314, 0.317647, 1)
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
 offset_left = 552.0
@@ -861,6 +1002,10 @@ stretch_mode = 2
 [node name="Me2" type="Label" parent="Menu/ContentArea/Credits/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "Azriel14
 - Game Designer
@@ -872,6 +1017,10 @@ text = "Azriel14
 [node name="You2" type="Label" parent="Menu/ContentArea/Credits/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 40
 text = "SonicMam
 - Level Designer
@@ -1070,6 +1219,16 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 2, 65536, 65536, 2, 131072, 1310
 layer_1/name = "Wall"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(15, 131073, 0, 17, 1, 0, 18, 131073, 0, 20, 1, 0, 22, 65537, 0, 23, 65537, 0, 28, 1, 0, 29, 131073, 0, 65565, 131073, 1, 131101, 131073, 2, 131100, 262145, 2, 65564, 1, 1, 65560, 131073, 1, 65559, 327681, 2, 65558, 65537, 2, 65557, 65537, 2, 65556, 262145, 2, 65555, 65537, 0, 65554, 65537, 1, 65553, 327681, 3, 65552, 65537, 0, 65551, 262145, 3, 65550, 1, 1, 131087, 262145, 2, 196623, 131073, 2, 196622, 1, 2, 131086, 327681, 2, 131085, 65537, 3, 131084, 262145, 1, 65548, 196609, 1, 12, 196609, 0, 14, 1, 0, 131092, 131073, 1, 196628, 131073, 2, 196627, 1, 2, 131091, 327681, 2, 131096, 262145, 3, 131097, 65537, 0, 196633, 65537, 1, 131098, 65537, 0, 196634, 262145, 2, 1048588, 196609, 3, 917522, 1, 0, 917525, 327681, 3, 917526, 262145, 3, 917527, 131073, 0, 917530, 1, 1, 917531, 262145, 2, 917532, 65537, 2, 917533, 131073, 2, 1048605, 196609, 3, 983067, 131073, 1, 983066, 327681, 3, 1048601, 65537, 2, 1048602, 65537, 2, 1048603, 131073, 2, 1048600, 1, 3, 983063, 131073, 2, 983062, 262145, 2, 1048598, 131073, 2, 1048597, 65537, 2, 1048596, 1, 2, 983060, 327681, 2, 983061, 65537, 1, 983059, 65537, 2, 1048594, 196609, 3, 1048591, 196609, 3, 983058, 1, 2, 983065, 1, 0, 983064, 196609, 3, 917516, 131073, 2, 851980, 131073, 0, 851981, 1, 3, 851990, 131073, 0, 851989, 1, 0, 851995, 65537, 0, 851996, 327681, 3, 26, 196609, 3, 24, 131073, 0, 21, 65537, 0, 131090, 65537, 2, 131095, 1, 1, 196631, 1, 2, 196632, 327681, 2, 262168, 1, 2, 262169, 65537, 2, 262170, 131073, 2, 131099, 65537, 0, 196635, 65537, 2, 196636, 131073, 2, 851997, 131073, 1, 851994, 1, 0, 786461, 131073, 0, 786460, 1, 0, 917524, 65537, 0, 851984, 65537, 3, 851985, 131073, 3, 917523, 65537, 0, 851982, 65537, 3, 1048586, 131073, 2, 983050, 262145, 2, 917514, 1, 0, 917515, 262145, 2, 851979, 1, 0, 983051, 131073, 2, 1048585, 1, 2, 983049, 1, 0, 131088, 65537, 2, 131089, 65537, 2, 851983, 65537, 3)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("15_f6mj2")
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+bus = &"SFX"
 
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage1Button" to="Menu" method="_on_stage_1_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage2Button" to="Menu" method="_on_stage_2_button_pressed"]
