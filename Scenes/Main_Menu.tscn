@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bjou0laa2y76d" path="res://SavedThings/Theme.tres" id="1_i8gvx"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rwml7"]
 [ext_resource type="Texture2D" uid="uid://bvtn767bikj6n" path="res://Assets/Sprites/MainMenu.png" id="1_yqs6j"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="3_4va0g"]
+[ext_resource type="Shader" path="res://SavedThings/outline.gdshader" id="3_4va0g"]
 [ext_resource type="Texture2D" uid="uid://cg568u605mhbn" path="res://Assets/Sprites/Logo.png" id="3_ni76p"]
 [ext_resource type="Script" path="res://Scripts/MenuCharacterAnimation.gd" id="3_q21je"]
 [ext_resource type="Texture2D" uid="uid://b66dgw8cdj3ys" path="res://Assets/Sprites/Dingleton.png" id="4_84nj6"]
@@ -554,13 +554,13 @@ offset_bottom = 1080.0
 color = Color(0.219608, 0.384314, 0.317647, 1)
 
 [node name="ContentArea" type="Control" parent="Menu"]
-clip_contents = true
 anchors_preset = 0
 offset_right = 1054.0
 offset_bottom = 1114.0
 
 [node name="Credits" type="MarginContainer" parent="Menu/ContentArea"]
 clip_children = 2
+layout_mode = 0
 offset_left = 1150.0
 offset_right = 2204.0
 offset_bottom = 1080.0
@@ -652,6 +652,85 @@ theme_override_font_sizes/font_size = 40
 text = "SonicMam
 - Level Designer
 - Sound Designer"
+
+[node name="HowToPlay" type="MarginContainer" parent="Menu/ContentArea"]
+clip_children = 2
+layout_mode = 0
+offset_left = 1150.0
+offset_right = 2204.0
+offset_bottom = 1080.0
+theme = ExtResource("1_i8gvx")
+
+[node name="HowToPlayTriangles" type="Sprite2D" parent="Menu/ContentArea/HowToPlay"]
+self_modulate = Color(0.137255, 0.25098, 0.203922, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-32, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("1_yqs6j")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 272)
+
+[node name="HowToPlayColorRect" type="ColorRect" parent="Menu/ContentArea/HowToPlay"]
+layout_mode = 2
+color = Color(0.137255, 0.25098, 0.203922, 1)
+
+[node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/HowToPlay"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Step1" type="TextureRect" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_htv1g")
+stretch_mode = 2
+
+[node name="Step12" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You play as Quandale Dinglelington
+currently exploring a temple.
+Use WASD or arrow keys to move."
+
+[node name="Step2" type="TextureRect" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_l8pob")
+stretch_mode = 2
+
+[node name="Step22" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Along your journey you will find
+yourself face to face with
+Vingletons—They will stop at
+nothing to get you."
+
+[node name="Step3" type="TextureRect" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+material = SubResource("ShaderMaterial_x8du3")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_l8pob")
+stretch_mode = 2
+
+[node name="Step32" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Guide Vingletons over plates, 
+causing crawlspaces to open.
+You can use crawlspaces to
+venture deeper."
 
 [node name="TrianglesShadow" type="Sprite2D" parent="Menu"]
 self_modulate = Color(0, 0, 0, 0.470588)

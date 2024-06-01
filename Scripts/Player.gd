@@ -52,15 +52,29 @@ func _update_sprite_frame():
 		"downL": {"Up": 3, "Right": 0}
 	}
 	var facingMap = ["downR", "downL", "upR", "upL"]
-
+	
+	var vertical_action = ""
+	var horizontal_action = ""
+	
+	if Input.is_action_pressed("Up") and not Input.is_action_pressed("Down"):
+		vertical_action = "Up"
+	elif Input.is_action_pressed("Down") and not Input.is_action_pressed("Up"):
+		vertical_action = "Down"
+	
+	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
+		horizontal_action = "Left"
+	elif Input.is_action_pressed("Right") and not Input.is_action_pressed("Left"):
+		horizontal_action = "Right"
+	
+	var action_to_check = [vertical_action, horizontal_action]
 	for action in directionMap[facing]:
-		if Input.is_action_pressed(action):
+		if action in action_to_check:
 			frame = directionMap[facing][action]
 			break
-
+	
 	if frame >= 0:
 		facing = facingMap[frame]
-
+	
 	$Dingleton.frame = frame
 
 # What happens when you die because you were killed
