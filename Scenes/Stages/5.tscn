@@ -19,8 +19,7 @@ position = Vector2(193, 959)
 position = Vector2(194, 127)
 
 [node name="Switch" parent="." instance=ExtResource("3_m60or")]
-position = Vector2(1761, 574)
-rotation = 1.5708
+position = Vector2(1776, 576)
 
 [node name="Exit" parent="." instance=ExtResource("4_q1y2s")]
 position = Vector2(132, 510)

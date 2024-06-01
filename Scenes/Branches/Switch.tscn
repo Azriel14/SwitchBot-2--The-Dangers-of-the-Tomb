@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d2h017pej1p4x" path="res://Assets/Sprites/Switch.png" id="2_jgy4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vemef"]
-size = Vector2(128, 128.25)
+size = Vector2(128, 128)
 
 [node name="Switch" type="CharacterBody2D" groups=["Switch"]]
 collision_layer = 64
@@ -19,5 +19,4 @@ texture = ExtResource("2_jgy4o")
 vframes = 2
 
 [node name="SwitchCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.125)
 shape = SubResource("RectangleShape2D_vemef")

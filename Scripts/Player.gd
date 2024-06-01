@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const maxSpeed := 1000
-const friction := 2000
-const acceleration := 3000
+const maxSpeed := 700
+const friction := 5000
+const acceleration := 9000
 
 var facing := "downR"
 var screenSize: Vector2

@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 var time = 0
 var speed = 800
-var timeThreshold = 1
-var detectionRange = 900
+var timeThreshold = 0.02
 var moveDirection = Vector2()
 
 @onready var player = $"../Player"
