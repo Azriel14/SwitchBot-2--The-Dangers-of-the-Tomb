@@ -1,5 +1,6 @@
 extends Control
 
+var stop
 var pullIn
 var pullOut
 var skibidi
@@ -34,7 +35,7 @@ func _physics_process(delta):
 
 # Feckin' sick menu animation
 	if pullOut:
-		if $ColorRect.size.x <= 1015 && skibidi:
+		if $ColorRect.size.x < 1050 && skibidi:
 			$Logo.position.x -= gyat
 			$LogoShadow.position.x -= gyat
 			$Buttons.position.x -= gyat
@@ -51,9 +52,30 @@ func _physics_process(delta):
 			rizz += 1
 			if rizz == 8:
 				skibidi = true
+	
+	if stop && $ContentArea/Credits.position.x < 1150:
+		$ContentArea/Credits.position.x += 50
+		print($ContentArea/Credits.position.x)
+		print($InTriangles.position.y)
+		if $ContentArea/Credits.position.x == 1150 && $InTriangles.position.y < 545:
+			$InTriangles.position.y += 4
+			if $InTriangles.position.y == 544:
+				$InTriangles.visible = false
+				$InTrianglesShadow.visible = false
+		if $ContentArea/Credits.position.x == 1150 && $InTriangles.visible == false:
+			_pull_in()
 
-	if Input.get_action_strength("Back"):
-		_pull_in()
+	if Input.get_action_strength("Back") && $ColorRect.size.x == 1050:
+		stop = true
+
+	if !stop:
+		if $ColorRect.size.x == 1050 && skibidi:
+			$InTriangles.visible = true
+			$InTrianglesShadow.visible = true
+			if $InTriangles.position.y > 540:
+				$InTriangles.position.y -= 1
+			if $ContentArea/Credits.position.x > 0:
+				$ContentArea/Credits.position.x -= 50
 
 	if pullIn:
 		if $ColorRect.size.x > 448 && !skibidi:
@@ -99,6 +121,7 @@ func _on_quit_pressed():
 func _pull_out():
 	pullOut = true
 	pullIn = false
+	stop = false
 	gyat = 0
 	rizz = 0
 
