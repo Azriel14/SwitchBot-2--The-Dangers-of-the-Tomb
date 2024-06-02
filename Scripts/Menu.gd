@@ -1,6 +1,7 @@
 extends Control
 
 var stop
+var back
 var pullIn
 var pullOut
 var skibidi
@@ -56,7 +57,7 @@ func _physics_process(delta):
 			if rizz == 8:
 				skibidi = true
 
-	if Input.get_action_strength("Back") && $ColorRect.size.x == 1050:
+	if Input.get_action_strength("Back") or back && $ColorRect.size.x == 1050:
 		stop = true
 
 	match state:
@@ -178,6 +179,7 @@ func _pull_out():
 	pullOut = true
 	pullIn = false
 	stop = false
+	back = false
 	gyat = 0
 	rizz = 0
 
@@ -214,3 +216,17 @@ func _on_stage_8_button_pressed():
 
 func _on_stage_9_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Stages/9.tscn")
+
+# That sure is a back button
+func _on_stage_select_back_button_pressed():
+	back = true
+
+func _on_options_back_button_pressed():
+	back = true
+
+func _on_how_to_play_back_button_pressed():
+	back = true
+
+func _on_credits_back_button_pressed():
+	back = true
+

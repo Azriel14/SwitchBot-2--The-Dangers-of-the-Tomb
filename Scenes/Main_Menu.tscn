@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cv6nh2fw72svo"]
+[gd_scene load_steps=38 format=3 uid="uid://cv6nh2fw72svo"]
 
 [ext_resource type="Theme" uid="uid://bjou0laa2y76d" path="res://SavedThings/Theme.tres" id="1_i8gvx"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rwml7"]
@@ -7,17 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://cg568u605mhbn" path="res://Assets/Sprites/Logo.png" id="3_ni76p"]
 [ext_resource type="Script" path="res://Scripts/MenuCharacterAnimation.gd" id="3_q21je"]
 [ext_resource type="Texture2D" uid="uid://b66dgw8cdj3ys" path="res://Assets/Sprites/Dingleton.png" id="4_84nj6"]
-[ext_resource type="Texture2D" uid="uid://c2jrsg26wlof3" path="res://Assets/Credits/Azriel14.png" id="4_htv1g"]
+[ext_resource type="Texture2D" uid="uid://c2jrsg26wlof3" path="res://Assets/Menu/Credits/Azriel14.png" id="4_htv1g"]
 [ext_resource type="Script" path="res://Scripts/MasterSlider.gd" id="4_oijk1"]
 [ext_resource type="Texture2D" uid="uid://to31yidi85hh" path="res://Assets/Sprites/Shadow.png" id="5_h0xlq"]
-[ext_resource type="Texture2D" uid="uid://d0cwn6m7lpnc1" path="res://Assets/Credits/SonicMam.png" id="5_l8pob"]
+[ext_resource type="Texture2D" uid="uid://d0cwn6m7lpnc1" path="res://Assets/Menu/Credits/SonicMam.png" id="5_l8pob"]
 [ext_resource type="Script" path="res://Scripts/MusicSlider.gd" id="5_yp82e"]
 [ext_resource type="Script" path="res://Scripts/SFXSlider.gd" id="6_e006d"]
 [ext_resource type="Texture2D" uid="uid://c7ssjci1pb138" path="res://Assets/Sprites/Vingleton.png" id="6_k27mj"]
-[ext_resource type="Texture2D" uid="uid://ce0qoquivjrtk" path="res://Assets/Sprites/checked-export.png" id="7_k8ts3"]
+[ext_resource type="Texture2D" uid="uid://ce0qoquivjrtk" path="res://Assets/Menu/Options/Checked.png" id="7_k8ts3"]
 [ext_resource type="Texture2D" uid="uid://0nl6wvo87sql" path="res://Assets/Sprites/TileSet.png" id="7_rxe0v"]
-[ext_resource type="Texture2D" uid="uid://3k3klvk513ek" path="res://Assets/Sprites/Unchecked-export.png" id="7_sgf8i"]
+[ext_resource type="Texture2D" uid="uid://3k3klvk513ek" path="res://Assets/Menu/Options/Unchecked.png" id="7_sgf8i"]
 [ext_resource type="Texture2D" uid="uid://b2v8pwi1bgb0g" path="res://Assets/Sprites/Wall.png" id="8_jviay"]
+[ext_resource type="Texture2D" uid="uid://dwt032mhdq8u3" path="res://Assets/Menu/HowToPlay/Placeholder.png" id="10_u16p4"]
+[ext_resource type="Texture2D" uid="uid://cccytlifkykvn" path="res://Assets/Menu/BackArrow.png" id="11_khnjr"]
+[ext_resource type="Texture2D" uid="uid://bqk24ry1jypeo" path="res://Assets/Menu/BackArrowHover.png" id="12_t1v5h"]
+[ext_resource type="Texture2D" uid="uid://bg64pwogpy2s7" path="res://Assets/Menu/BackArrowPressed.png" id="14_06eb1"]
 [ext_resource type="AudioStream" uid="uid://drc5vag1s2bxs" path="res://Assets/Sound/One-Piece-We-Are-8Bit.ogg" id="15_f6mj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v27hy"]
@@ -621,6 +625,23 @@ region_rect = Rect2(0, 0, 16, 272)
 layout_mode = 2
 color = Color(0.137255, 0.25098, 0.203922, 1)
 
+[node name="BackButton" type="Control" parent="Menu/ContentArea/StageSelect"]
+layout_mode = 2
+
+[node name="StageSelectBackButton" type="TextureButton" parent="Menu/ContentArea/StageSelect/BackButton"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 144.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("11_khnjr")
+texture_pressed = ExtResource("14_06eb1")
+texture_hover = ExtResource("12_t1v5h")
+
 [node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/StageSelect"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -743,6 +764,23 @@ region_rect = Rect2(0, 0, 16, 272)
 layout_mode = 2
 color = Color(0.137255, 0.25098, 0.203922, 1)
 
+[node name="BackButton" type="Control" parent="Menu/ContentArea/Options"]
+layout_mode = 2
+
+[node name="OptionsBackButton" type="TextureButton" parent="Menu/ContentArea/Options/BackButton"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 144.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("11_khnjr")
+texture_pressed = ExtResource("14_06eb1")
+texture_hover = ExtResource("12_t1v5h")
+
 [node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/Options"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -855,13 +893,30 @@ region_rect = Rect2(0, 0, 16, 272)
 layout_mode = 2
 color = Color(0.137255, 0.25098, 0.203922, 1)
 
+[node name="BackButton" type="Control" parent="Menu/ContentArea/HowToPlay"]
+layout_mode = 2
+
+[node name="HowToPlayBackButton" type="TextureButton" parent="Menu/ContentArea/HowToPlay/BackButton"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 144.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("11_khnjr")
+texture_pressed = ExtResource("14_06eb1")
+texture_hover = ExtResource("12_t1v5h")
+
 [node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/HowToPlay"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 40
 columns = 2
 
 [node name="Step1" type="TextureRect" parent="Menu/ContentArea/HowToPlay/GridContainer"]
@@ -869,7 +924,7 @@ material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("4_htv1g")
+texture = ExtResource("10_u16p4")
 stretch_mode = 2
 
 [node name="Step12" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
@@ -888,7 +943,7 @@ material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_l8pob")
+texture = ExtResource("10_u16p4")
 stretch_mode = 2
 
 [node name="Step22" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
@@ -908,7 +963,7 @@ material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_l8pob")
+texture = ExtResource("10_u16p4")
 stretch_mode = 2
 
 [node name="Step32" type="Label" parent="Menu/ContentArea/HowToPlay/GridContainer"]
@@ -946,34 +1001,51 @@ region_rect = Rect2(0, 0, 16, 272)
 layout_mode = 2
 color = Color(0.137255, 0.25098, 0.203922, 1)
 
-[node name="Panel" type="Control" parent="Menu/ContentArea/Credits"]
+[node name="Shadows" type="Control" parent="Menu/ContentArea/Credits"]
 layout_mode = 2
 
-[node name="MeShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Panel"]
+[node name="MeShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Shadows"]
 self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
-offset_left = 171.0
-offset_top = 247.0
-offset_right = 511.0
-offset_bottom = 587.0
+offset_left = 173.0
+offset_top = 249.0
+offset_right = 513.0
+offset_bottom = 589.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_htv1g")
 stretch_mode = 2
 
-[node name="YouShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Panel"]
+[node name="YouShadow" type="TextureRect" parent="Menu/ContentArea/Credits/Shadows"]
 self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_x8du3")
 layout_mode = 2
-offset_left = 552.0
-offset_top = 247.0
-offset_right = 892.0
-offset_bottom = 587.0
+offset_left = 554.0
+offset_top = 249.0
+offset_right = 894.0
+offset_bottom = 589.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_l8pob")
 stretch_mode = 2
+
+[node name="BackButton" type="Control" parent="Menu/ContentArea/Credits"]
+layout_mode = 2
+
+[node name="CreditsBackButton" type="TextureButton" parent="Menu/ContentArea/Credits/BackButton"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 144.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("11_khnjr")
+texture_pressed = ExtResource("14_06eb1")
+texture_hover = ExtResource("12_t1v5h")
 
 [node name="GridContainer" type="GridContainer" parent="Menu/ContentArea/Credits"]
 layout_mode = 2
@@ -1230,6 +1302,7 @@ bus = &"Music"
 process_mode = 3
 bus = &"SFX"
 
+[connection signal="pressed" from="Menu/ContentArea/StageSelect/BackButton/StageSelectBackButton" to="Menu" method="_on_stage_select_back_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage1Button" to="Menu" method="_on_stage_1_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage2Button" to="Menu" method="_on_stage_2_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage3Button" to="Menu" method="_on_stage_3_button_pressed"]
@@ -1239,6 +1312,9 @@ bus = &"SFX"
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage7Button" to="Menu" method="_on_stage_7_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage8Button" to="Menu" method="_on_stage_8_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage9Button" to="Menu" method="_on_stage_9_button_pressed"]
+[connection signal="pressed" from="Menu/ContentArea/Options/BackButton/OptionsBackButton" to="Menu" method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="Menu/ContentArea/HowToPlay/BackButton/HowToPlayBackButton" to="Menu" method="_on_how_to_play_back_button_pressed"]
+[connection signal="pressed" from="Menu/ContentArea/Credits/BackButton/CreditsBackButton" to="Menu" method="_on_credits_back_button_pressed"]
 [connection signal="pressed" from="Menu/Buttons/VBoxContainer/Start" to="Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Buttons/VBoxContainer/Stage Select" to="Menu" method="_on_stage_select_pressed"]
 [connection signal="pressed" from="Menu/Buttons/VBoxContainer/Options" to="Menu" method="_on_options_pressed"]

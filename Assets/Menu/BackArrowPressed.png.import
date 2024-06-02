@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce0qoquivjrtk"
-path="res://.godot/imported/checked-export.png-41b472635939ffd4737ed9ca665ce454.ctex"
+uid="uid://bg64pwogpy2s7"
+path="res://.godot/imported/BackArrowPressed.png-816996e926080122119b65e28e275436.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/checked-export.png"
-dest_files=["res://.godot/imported/checked-export.png-41b472635939ffd4737ed9ca665ce454.ctex"]
+source_file="res://Assets/Menu/BackArrowPressed.png"
+dest_files=["res://.godot/imported/BackArrowPressed.png-816996e926080122119b65e28e275436.ctex"]
 
 [params]
 
