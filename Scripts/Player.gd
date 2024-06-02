@@ -26,6 +26,11 @@ func _physics_process(delta):
 				velocity = Vector2()
 			else:
 				velocity -= velocity.normalized() * frictionForce
+	
+	if velocity != Vector2(0,0):
+		$Particles.emitting = true
+	else:
+		$Particles.emitting = false
 
 	move_and_slide()
 	_update_sprite_frame()

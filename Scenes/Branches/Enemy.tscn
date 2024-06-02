@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmu6kuysuve6a"]
+[gd_scene load_steps=11 format=3 uid="uid://cmu6kuysuve6a"]
 
 [ext_resource type="Texture2D" uid="uid://c7ssjci1pb138" path="res://Assets/Sprites/Vingleton.png" id="1_248fr"]
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_hmr5g"]
 [ext_resource type="Texture2D" uid="uid://to31yidi85hh" path="res://Assets/Sprites/Shadow.png" id="2_f10ho"]
+[ext_resource type="AudioStream" uid="uid://dqu5bs43b25os" path="res://Assets/SFX/2024-06-02-12-40-44.ogg" id="4_ceutt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h62l6"]
 size = Vector2(128, 128)
@@ -15,6 +16,14 @@ size = Vector2(128, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oy4ae"]
 size = Vector2(20, 128)
+
+[sub_resource type="Curve" id="Curve_1so58"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.447648), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_3xmex"]
+offsets = PackedFloat32Array(0, 0.341564, 0.633745)
+colors = PackedColorArray(1, 0.509804, 0.454902, 1, 0.835294, 0.235294, 0.415686, 1, 0.111197, 0.111197, 0.111197, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.99, 0.99)
@@ -67,5 +76,22 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_oy4ae")
 target_position = Vector2(1920, 0)
 collision_mask = 5
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+amount = 16
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(64, 64)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 80.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_1so58")
+color_ramp = SubResource("Gradient_3xmex")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ceutt")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

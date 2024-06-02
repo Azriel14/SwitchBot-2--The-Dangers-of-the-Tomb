@@ -154,6 +154,7 @@ func _physics_process(delta):
 				skibidi = false
 
 func _on_start_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/1.tscn")
 
 func _on_stage_select_pressed():
@@ -191,30 +192,39 @@ func _pull_in():
 
 # That sure is a stage slect
 func _on_stage_1_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/1.tscn")
 
 func _on_stage_2_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/2.tscn")
 
 func _on_stage_3_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/3.tscn")
 
 func _on_stage_4_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/4.tscn")
 
 func _on_stage_5_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/5.tscn")
 
 func _on_stage_6_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/6.tscn")
 
 func _on_stage_7_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/7.tscn")
 
 func _on_stage_8_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/8.tscn")
 
 func _on_stage_9_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/9.tscn")
 
 # That sure is a back button

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cv6nh2fw72svo"]
+[gd_scene load_steps=42 format=3 uid="uid://cv6nh2fw72svo"]
 
 [ext_resource type="Theme" uid="uid://bjou0laa2y76d" path="res://SavedThings/Theme.tres" id="1_i8gvx"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rwml7"]
@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cccytlifkykvn" path="res://Assets/Menu/BackArrow.png" id="11_khnjr"]
 [ext_resource type="Texture2D" uid="uid://bqk24ry1jypeo" path="res://Assets/Menu/BackArrowHover.png" id="12_t1v5h"]
 [ext_resource type="Texture2D" uid="uid://bg64pwogpy2s7" path="res://Assets/Menu/BackArrowPressed.png" id="14_06eb1"]
-[ext_resource type="AudioStream" uid="uid://drc5vag1s2bxs" path="res://Assets/Sound/One-Piece-We-Are-8Bit.ogg" id="15_f6mj2"]
+[ext_resource type="AudioStream" uid="uid://drc5vag1s2bxs" path="res://Assets/Music/One-Piece-We-Are-8Bit.ogg" id="15_f6mj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v27hy"]
 
@@ -78,8 +78,23 @@ shader_parameter/number_of_images = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dmmj"]
 size = Vector2(40, 52)
 
+[sub_resource type="Curve" id="Curve_bi0lm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.447648), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0nke4"]
+colors = PackedColorArray(0.708812, 0.605441, 0.503156, 1, 0.408476, 0.23038, 0.352913, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kk7r"]
 size = Vector2(128, 128)
+
+[sub_resource type="Curve" id="Curve_h4l35"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.447648), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2rvuv"]
+offsets = PackedFloat32Array(0, 0.341564, 0.633745)
+colors = PackedColorArray(1, 0.509804, 0.454902, 1, 0.835294, 0.235294, 0.415686, 1, 0.111197, 0.111197, 0.111197, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_disx5"]
 size = Vector2(55, 1088)
@@ -1247,6 +1262,22 @@ offset = Vector2(0, 4)
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_1dmmj")
 
+[node name="PlayerParticles" type="CPUParticles2D" parent="PlayerMenu"]
+process_mode = 3
+z_index = -1
+position = Vector2(0, 29)
+amount = 16
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(16, 3)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 80.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_bi0lm")
+color_ramp = SubResource("Gradient_0nke4")
+
 [node name="EnemyMenu" type="CharacterBody2D" parent="." groups=["Enemy"]]
 z_index = -1
 position = Vector2(-250, 0)
@@ -1268,7 +1299,21 @@ scale = Vector2(10, 4)
 texture = ExtResource("5_h0xlq")
 
 [node name="VingCollision" type="CollisionShape2D" parent="EnemyMenu"]
+visible = false
 shape = SubResource("RectangleShape2D_6kk7r")
+
+[node name="Particles" type="CPUParticles2D" parent="EnemyMenu"]
+amount = 16
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(64, 64)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 80.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_h4l35")
+color_ramp = SubResource("Gradient_2rvuv")
 
 [node name="TP" type="Area2D" parent="."]
 position = Vector2(2048, 540)
@@ -1280,7 +1325,7 @@ position = Vector2(27.5, 4)
 shape = SubResource("RectangleShape2D_disx5")
 
 [node name="Stage" type="TileMap" parent="."]
-z_index = -2
+z_index = -4
 texture_filter = 1
 scale = Vector2(4.00297, 3.99421)
 tile_set = SubResource("TileSet_1wmpr")
