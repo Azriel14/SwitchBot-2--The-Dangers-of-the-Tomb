@@ -5,15 +5,24 @@ var timeThreshold = 0.2
 var moveDirection = Vector2()
 var time = 0.0
 
-@onready var player = $"../Player"
 @onready var allCast = [
 	$Cast/ShapeCastUp,
 	$Cast/ShapeCastDown,
 	$Cast/ShapeCastLeft,
 	$Cast/ShapeCastRight
 ]
+@onready var player = $"../Player"
+@onready var SFXPlayer = $AudioStreamPlayer
+@onready var BoomParticlesTop = $BoomParticles/BoomParticlesTop
+@onready var BoomParticlesTop2 = $BoomParticles/BoomParticlesTop2
+@onready var BoomParticlesBottom = $BoomParticles/BoomParticlesBottom
+@onready var BoomParticlesBottom2 = $BoomParticles/BoomParticlesBottom2
+@onready var BoomParticlesLeft = $BoomParticles/BoomParticlesLeft
+@onready var BoomParticlesLeft2 = $BoomParticles/BoomParticlesLeft2
+@onready var BoomParticlesRight = $BoomParticles/BoomParticlesRight
+@onready var BoomParticlesRight2 = $BoomParticles/BoomParticlesRight2
 
-enum State {idle, moving, waiting}
+enum State {idle, moving, charging}
 var state = State.idle
 var moveTimer = 0.0
 
@@ -29,13 +38,14 @@ func _physics_process(delta):
 		moveTimer = 0.0
 		for cast in allCast:
 			if cast.get_collider(0) == player:
-				$AudioStreamPlayer.playing = true
-				state = State.waiting
+				SFXPlayer.stream = load("res://Assets/SFX/Charge.ogg")
+				SFXDeconflicter.play(SFXPlayer)
+				state = State.charging
 				break
-				
-	elif state == State.waiting:
+
+	elif state == State.charging:
 		moveTimer += delta
-		if moveTimer >= 1.6:
+		if moveTimer >= 1:
 			if shapeCastUpColliding:
 				moveDirection = Vector2.UP
 			elif shapeCastDownColliding:
@@ -56,7 +66,11 @@ func _physics_process(delta):
 		else:
 			time = 0
 		velocity = moveDirection * speed
-
+	
+	if !SFXPlayer.playing && velocity != Vector2.ZERO:
+		SFXPlayer.stream = load("res://Assets/SFX/Boom.ogg")
+		SFXDeconflicter.play(SFXPlayer)
+		
 	move_and_slide()
 
 # Oh, you touched my tra lalala

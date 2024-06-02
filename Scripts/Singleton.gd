@@ -12,7 +12,7 @@ func _physics_process(_delta):
 		Engine.time_scale = 2
 	else:
 		Engine.time_scale = 1
-		
+
 func _increment_stage():
 	stage += 1
 

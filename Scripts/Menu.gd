@@ -17,138 +17,152 @@ var wobbleAmplitudeY = 0.25
 enum State {StageSelect, Options, HowToPlay, Credits, knull}
 var state = State.knull
 
+@onready var logo = $Logo
+@onready var buttons = $Buttons
+@onready var triangles = $Triangles
+@onready var colorRect = $ColorRect
+@onready var logoShadow = $LogoShadow
+@onready var inTriangles = $InTriangles
+@onready var options = $ContentArea/Options
+@onready var credits = $ContentArea/Credits
+@onready var trianglesShadow = $TrianglesShadow
+@onready var colorRectShadow = $ColorRectShadow
+@onready var howToPlay = $ContentArea/HowToPlay
+@onready var inTrianglesShadow = $InTrianglesShadow
+@onready var stageSelect = $ContentArea/StageSelect
+
 func _physics_process(delta):
-# Triangle go down
+	# Triangle go down
 	down -= 0.15
 
-	$Triangles.region_rect = Rect2(0, down, 16, 272)
-	$TrianglesShadow.region_rect = Rect2(0, down, 16, 272)
-	$InTriangles.region_rect = Rect2(0, down + 8, 16, 272)
-	$InTrianglesShadow.region_rect = Rect2(0, down + 8, 16, 272)
+	triangles.region_rect = Rect2(0, down, 16, 272)
+	trianglesShadow.region_rect = Rect2(0, down, 16, 272)
+	inTriangles.region_rect = Rect2(0, down + 8, 16, 272)
+	inTrianglesShadow.region_rect = Rect2(0, down + 8, 16, 272)
 
-# Logo wobble
+	# Logo wobble
 	timePassed += delta
 
 	var xOffset = sin(timePassed * wobbleSpeedX) * wobbleAmplitudeX
 	var yOffset = sin(timePassed * wobbleSpeedY) * wobbleAmplitudeY
 
-	$Logo.position.x += xOffset
-	$Logo.position.y += yOffset
-	$LogoShadow.position.x += xOffset
-	$LogoShadow.position.y += yOffset
+	logo.position.x += xOffset
+	logo.position.y += yOffset
+	logoShadow.position.x += xOffset
+	logoShadow.position.y += yOffset
 
-# Feckin' sick menu animation
+	# Feckin' sick menu animation
 	if pullOut:
-		if $ColorRect.size.x < 1050 && skibidi:
-			$Logo.position.x -= gyat
-			$LogoShadow.position.x -= gyat
-			$Buttons.position.x -= gyat
-			$ColorRect.size.x += gyat
-			$ColorRectShadow.size.x += gyat
-			$Triangles.position.x += gyat
-			$TrianglesShadow.position.x += gyat
+		if colorRect.size.x < 1050 and skibidi:
+			logo.position.x -= gyat
+			logoShadow.position.x -= gyat
+			buttons.position.x -= gyat
+			colorRect.size.x += gyat
+			colorRectShadow.size.x += gyat
+			triangles.position.x += gyat
+			trianglesShadow.position.x += gyat
 			gyat += 1
-		elif !skibidi:
-			$ColorRect.size.x -= rizz
-			$ColorRectShadow.size.x -= rizz
-			$Triangles.position.x -= rizz
-			$TrianglesShadow.position.x -= rizz
+		elif not skibidi:
+			colorRect.size.x -= rizz
+			colorRectShadow.size.x -= rizz
+			triangles.position.x -= rizz
+			trianglesShadow.position.x -= rizz
 			rizz += 1
 			if rizz == 8:
 				skibidi = true
 
-	if Input.get_action_strength("Back") or back && $ColorRect.size.x == 1050:
+	if Input.get_action_strength("Back") or back and colorRect.size.x == 1050:
 		stop = true
 
 	match state:
 		State.StageSelect:
-			if stop && $ContentArea/StageSelect.position.x < 1150:
-				$ContentArea/StageSelect.position.x += 50
-				if $ContentArea/StageSelect.position.x == 1150 && $InTriangles.position.y < 545:
-					$InTriangles.position.y += 4
-					if $InTriangles.position.y == 544:
-						$InTriangles.visible = false
-						$InTrianglesShadow.visible = false
-				if $ContentArea/StageSelect.position.x == 1150 && $InTriangles.visible == false:
+			if stop and stageSelect.position.x < 1150:
+				stageSelect.position.x += 50
+				if stageSelect.position.x == 1150 and inTriangles.position.y < 545:
+					inTriangles.position.y += 4
+					if inTriangles.position.y == 544:
+						inTriangles.visible = false
+						inTrianglesShadow.visible = false
+				if stageSelect.position.x == 1150 and not inTriangles.visible:
 					_pull_in()
-			if !stop:
-				if $ColorRect.size.x == 1050 && skibidi:
-					$InTriangles.visible = true
-					$InTrianglesShadow.visible = true
-					if $InTriangles.position.y > 540:
-						$InTriangles.position.y -= 1
-					if $ContentArea/StageSelect.position.x > 0:
-						$ContentArea/StageSelect.position.x -= 50
+			if not stop:
+				if colorRect.size.x == 1050 and skibidi:
+					inTriangles.visible = true
+					inTrianglesShadow.visible = true
+					if inTriangles.position.y > 540:
+						inTriangles.position.y -= 1
+					if stageSelect.position.x > 0:
+						stageSelect.position.x -= 50
 		State.Options:
-			if stop && $ContentArea/Options.position.x < 1150:
-				$ContentArea/Options.position.x += 50
-				if $ContentArea/Options.position.x == 1150 && $InTriangles.position.y < 545:
-					$InTriangles.position.y += 4
-					if $InTriangles.position.y == 544:
-						$InTriangles.visible = false
-						$InTrianglesShadow.visible = false
-				if $ContentArea/Options.position.x == 1150 && $InTriangles.visible == false:
+			if stop and options.position.x < 1150:
+				options.position.x += 50
+				if options.position.x == 1150 and inTriangles.position.y < 545:
+					inTriangles.position.y += 4
+					if inTriangles.position.y == 544:
+						inTriangles.visible = false
+						inTrianglesShadow.visible = false
+				if options.position.x == 1150 and not inTriangles.visible:
 					_pull_in()
-			if !stop:
-				if $ColorRect.size.x == 1050 && skibidi:
-					$InTriangles.visible = true
-					$InTrianglesShadow.visible = true
-					if $InTriangles.position.y > 540:
-						$InTriangles.position.y -= 1
-					if $ContentArea/Options.position.x > 0:
-						$ContentArea/Options.position.x -= 50
+			if not stop:
+				if colorRect.size.x == 1050 and skibidi:
+					inTriangles.visible = true
+					inTrianglesShadow.visible = true
+					if inTriangles.position.y > 540:
+						inTriangles.position.y -= 1
+					if options.position.x > 0:
+						options.position.x -= 50
 		State.HowToPlay:
-			if stop && $ContentArea/HowToPlay.position.x < 1150:
-				$ContentArea/HowToPlay.position.x += 50
-				if $ContentArea/HowToPlay.position.x == 1150 && $InTriangles.position.y < 545:
-					$InTriangles.position.y += 4
-					if $InTriangles.position.y == 544:
-						$InTriangles.visible = false
-						$InTrianglesShadow.visible = false
-				if $ContentArea/HowToPlay.position.x == 1150 && $InTriangles.visible == false:
+			if stop and howToPlay.position.x < 1150:
+				howToPlay.position.x += 50
+				if howToPlay.position.x == 1150 and inTriangles.position.y < 545:
+					inTriangles.position.y += 4
+					if inTriangles.position.y == 544:
+						inTriangles.visible = false
+						inTrianglesShadow.visible = false
+				if howToPlay.position.x == 1150 and not inTriangles.visible:
 					_pull_in()
-			if !stop:
-				if $ColorRect.size.x == 1050 && skibidi:
-					$InTriangles.visible = true
-					$InTrianglesShadow.visible = true
-					if $InTriangles.position.y > 540:
-						$InTriangles.position.y -= 1
-					if $ContentArea/HowToPlay.position.x > 0:
-						$ContentArea/HowToPlay.position.x -= 50
+			if not stop:
+				if colorRect.size.x == 1050 and skibidi:
+					inTriangles.visible = true
+					inTrianglesShadow.visible = true
+					if inTriangles.position.y > 540:
+						inTriangles.position.y -= 1
+					if howToPlay.position.x > 0:
+						howToPlay.position.x -= 50
 		State.Credits:
-			if stop && $ContentArea/Credits.position.x < 1150:
-				$ContentArea/Credits.position.x += 50
-				if $ContentArea/Credits.position.x == 1150 && $InTriangles.position.y < 545:
-					$InTriangles.position.y += 4
-					if $InTriangles.position.y == 544:
-						$InTriangles.visible = false
-						$InTrianglesShadow.visible = false
-				if $ContentArea/Credits.position.x == 1150 && $InTriangles.visible == false:
+			if stop and credits.position.x < 1150:
+				credits.position.x += 50
+				if credits.position.x == 1150 and inTriangles.position.y < 545:
+					inTriangles.position.y += 4
+					if inTriangles.position.y == 544:
+						inTriangles.visible = false
+						inTrianglesShadow.visible = false
+				if credits.position.x == 1150 and not inTriangles.visible:
 					_pull_in()
-			if !stop:
-				if $ColorRect.size.x == 1050 && skibidi:
-					$InTriangles.visible = true
-					$InTrianglesShadow.visible = true
-					if $InTriangles.position.y > 540:
-						$InTriangles.position.y -= 1
-					if $ContentArea/Credits.position.x > 0:
-						$ContentArea/Credits.position.x -= 50
+			if not stop:
+				if colorRect.size.x == 1050 and skibidi:
+					inTriangles.visible = true
+					inTrianglesShadow.visible = true
+					if inTriangles.position.y > 540:
+						inTriangles.position.y -= 1
+					if credits.position.x > 0:
+						credits.position.x -= 50
 
 	if pullIn:
-		if $ColorRect.size.x > 448 && !skibidi:
-			$Logo.position.x += gyat
-			$LogoShadow.position.x += gyat
-			$Buttons.position.x += gyat
-			$ColorRect.size.x -= gyat
-			$ColorRectShadow.size.x -= gyat
-			$Triangles.position.x -= gyat
-			$TrianglesShadow.position.x -= gyat
+		if colorRect.size.x > 448 and not skibidi:
+			logo.position.x += gyat
+			logoShadow.position.x += gyat
+			buttons.position.x += gyat
+			colorRect.size.x -= gyat
+			colorRectShadow.size.x -= gyat
+			triangles.position.x -= gyat
+			trianglesShadow.position.x -= gyat
 			gyat += 1
 		elif skibidi:
-			$ColorRect.size.x += rizz
-			$ColorRectShadow.size.x += rizz
-			$Triangles.position.x += rizz
-			$TrianglesShadow.position.x += rizz
+			colorRect.size.x += rizz
+			colorRectShadow.size.x += rizz
+			triangles.position.x += rizz
+			trianglesShadow.position.x += rizz
 			rizz += 1
 			if rizz == 8:
 				skibidi = false
@@ -168,7 +182,7 @@ func _on_options_pressed():
 func _on_how_to_play_pressed():
 	state = State.HowToPlay
 	_pull_out()
-	
+
 func _on_credits_pressed():
 	state = State.Credits
 	_pull_out()
@@ -190,7 +204,7 @@ func _pull_in():
 	gyat = 0
 	rizz = 0
 
-# That sure is a stage slect
+# That sure is a stage select
 func _on_stage_1_button_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Stages/1.tscn")

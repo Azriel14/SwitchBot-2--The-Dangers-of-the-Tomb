@@ -23,6 +23,7 @@ config/icon="res://Icon.png"
 [autoload]
 
 Singleton="*res://Scripts/Singleton.gd"
+SFXDeconflicter="*res://SavedThings/sfx-deconflicter.gd"
 
 [display]
 
