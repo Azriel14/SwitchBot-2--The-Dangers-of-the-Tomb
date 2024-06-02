@@ -37,6 +37,3 @@ script = ExtResource("7_njhvp")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
-
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"SFX"

@@ -1343,10 +1343,6 @@ stream = ExtResource("15_f6mj2")
 autoplay = true
 bus = &"Music"
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-bus = &"SFX"
-
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/BackButton/StageSelectBackButton" to="Menu" method="_on_stage_select_back_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage1Button" to="Menu" method="_on_stage_1_button_pressed"]
 [connection signal="pressed" from="Menu/ContentArea/StageSelect/GridContainer/Stage2Button" to="Menu" method="_on_stage_2_button_pressed"]

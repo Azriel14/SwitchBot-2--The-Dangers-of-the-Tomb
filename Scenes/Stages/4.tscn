@@ -43,6 +43,3 @@ script = ExtResource("6_snlwj")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
-
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"SFX"
